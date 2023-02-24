@@ -21,8 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Cloud
-  m_Shader: {fileID: -6465566751694194690, guid: 3cdc1ddbcf7a6b940aabfb64db708361,
-    type: 3}
+  m_Shader: {fileID: 4800000, guid: a08fef06d8330aa449a7b5748895af77, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 2
@@ -50,19 +49,24 @@ Material:
     m_Floats:
     - _BaseNoiseScale: 0.001
     - _BaseNoiseSpeed: 20
-    - _BaseNoiseStrength: 2
+    - _BaseNoiseStrength: 1
+    - _BowlShape: -0.7
     - _EdgeMax: 0.9
     - _EdgeMin: -0.08
+    - _Emission: 1
+    - _FresnelPower: 3
+    - _FresnelStrength: 2
     - _NoisePower: 2
     - _NoiseScale: 0.01
     - _NoiseSpeed: 30
     - _NoiseStrength: 50
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Strength: 146.27
+    - _Strength: 80
+    - _TransparentRange: 100
     m_Colors:
-    - _ColorDown: {r: 0.23584908, g: 0.23584908, b: 0.23584908, a: 0}
-    - _ColorUp: {r: 0.9056604, g: 0.9056604, b: 0.9056604, a: 0}
+    - _ColorDown: {r: 0, g: 0, b: 0, a: 0}
+    - _ColorUp: {r: 0.6886792, g: 0.6886792, b: 0.6886792, a: 0}
     - _Remap: {r: 0, g: 1, b: -0.5, a: 0.5}
     - _RotationOffset: {r: 1, g: 0, b: 0, a: 90}
   m_BuildTextureStacks: []
