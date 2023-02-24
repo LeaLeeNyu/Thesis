@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-5256606421185321057
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 5
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Cloud
+  m_Shader: {fileID: -6465566751694194690, guid: 3cdc1ddbcf7a6b940aabfb64db708361,
+    type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 2
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _BaseNoiseScale: 0.001
+    - _BaseNoiseSpeed: 20
+    - _BaseNoiseStrength: 2
+    - _EdgeMax: 0.9
+    - _EdgeMin: -0.08
+    - _NoisePower: 2
+    - _NoiseScale: 0.01
+    - _NoiseSpeed: 30
+    - _NoiseStrength: 50
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Strength: 146.27
+    m_Colors:
+    - _ColorDown: {r: 0.23584908, g: 0.23584908, b: 0.23584908, a: 0}
+    - _ColorUp: {r: 0.9056604, g: 0.9056604, b: 0.9056604, a: 0}
+    - _Remap: {r: 0, g: 1, b: -0.5, a: 0.5}
+    - _RotationOffset: {r: 1, g: 0, b: 0, a: 90}
+  m_BuildTextureStacks: []
