@@ -66,10 +66,10 @@ Material:
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _Distance: 811
+    - _Distance: 810.29
     - _Distance1: 2000
     - _DstBlend: 0
-    - _Falloff: 1.2
+    - _Falloff: 0.6
     - _Falloff1: 0.6
     - _GlossMapScale: 1
     - _Glossiness: 0.5
@@ -77,7 +77,7 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _Offset: -41.55
+    - _Offset: 0
     - _Offset1: 0
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
@@ -89,9 +89,9 @@ Material:
     - __dirty: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _ColorBottom: {r: 0.44117647, g: 1, b: 0.62279415, a: 0}
+    - _ColorBottom: {r: 0.4827341, g: 0.49734506, b: 0.5660378, a: 0}
     - _ColorBottom1: {r: 0.35618514, g: 0.89705884, b: 0.60610616, a: 0}
-    - _ColorTop: {r: 1, g: 0.46323532, b: 0.46323532, a: 0}
+    - _ColorTop: {r: 0.03141337, g: 0.031114252, b: 0.03773582, a: 0}
     - _ColorTop1: {r: 1, g: 0.52129817, b: 0.41176468, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
