@@ -1,5 +1,5 @@
 {
-    "m_SGVersion": 2,
+    "m_SGVersion": 3,
     "m_Type": "UnityEditor.ShaderGraph.GraphData",
     "m_ObjectId": "e2fb77ceb37c4b1a8929b9e9f73ba712",
     "m_Properties": [
@@ -11,6 +11,12 @@
         }
     ],
     "m_Keywords": [],
+    "m_Dropdowns": [],
+    "m_CategoryData": [
+        {
+            "m_Id": "6d0e53237a3d470a8ac3d4abb05df397"
+        }
+    ],
     "m_Nodes": [
         {
             "m_Id": "d46889b864e4c08d9c44283872b4675f"
@@ -191,10 +197,11 @@
         "serializedMesh": {
             "m_SerializedMesh": "{\"mesh\":{\"instanceID\":0}}",
             "m_Guid": ""
-        }
+        },
+        "preventRotation": false
     },
     "m_Path": "Sub Graphs",
-    "m_ConcretePrecision": 0,
+    "m_GraphPrecision": 0,
     "m_PreviewMode": 2,
     "m_OutputNode": {
         "m_Id": "d46889b864e4c08d9c44283872b4675f"
@@ -566,9 +573,13 @@
         "m_GuidSerialized": "6199f1ee-31e6-4cd7-bc22-9b2b713c827e"
     },
     "m_Name": "Tiling",
+    "m_DefaultRefNameVersion": 0,
+    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Vector1_4A754F05",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
@@ -617,6 +628,21 @@
     "m_CustomColors": {
         "m_SerializableColors": []
     }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.CategoryData",
+    "m_ObjectId": "6d0e53237a3d470a8ac3d4abb05df397",
+    "m_Name": "",
+    "m_ChildObjectList": [
+        {
+            "m_Id": "5fd0eca9855db88aaece232c1643bf55"
+        },
+        {
+            "m_Id": "fb585696f9721384b175e7aec0fced9a"
+        }
+    ]
 }
 
 {
@@ -732,13 +758,13 @@
     },
     "m_Name": "Time",
     "m_DrawState": {
-        "m_Expanded": false,
+        "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -500.0,
-            "y": 74.0,
-            "width": 91.0,
-            "height": 76.0
+            "x": -543.2000122070313,
+            "y": 73.5999984741211,
+            "width": 124.00003051757813,
+            "height": 172.79998779296876
         }
     },
     "m_Slots": [
@@ -779,10 +805,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -459.0,
-            "y": -168.0,
-            "width": 206.0,
-            "height": 130.0
+            "x": -491.20001220703127,
+            "y": -404.0,
+            "width": 208.0,
+            "height": 312.79998779296877
         }
     },
     "m_Slots": [
@@ -792,12 +818,13 @@
     ],
     "synonyms": [],
     "m_Precision": 1,
-    "m_PreviewExpanded": false,
+    "m_PreviewExpanded": true,
     "m_PreviewMode": 2,
     "m_CustomColors": {
         "m_SerializableColors": []
     },
-    "m_Space": 4
+    "m_Space": 4,
+    "m_PositionSource": 0
 }
 
 {
@@ -1222,9 +1249,13 @@
         "m_GuidSerialized": "36296689-7814-4702-b067-af1b7818d0f0"
     },
     "m_Name": "Speed",
+    "m_DefaultRefNameVersion": 0,
+    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Vector1_D4852542",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
