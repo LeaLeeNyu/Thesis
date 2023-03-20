@@ -13,6 +13,7 @@ Material:
   - _MK_ALBEDO_MAP
   - _MK_ARTISTIC_ANIMATION_STUTTER
   - _MK_ARTISTIC_PROJECTION_SCREEN_SPACE
+  - _MK_ARTISTIC_SKETCH
   - _MK_ENVIRONMENT_REFLECTIONS_AMBIENT
   - _MK_LIGHT_CEL
   - _MK_RECEIVE_SHADOWS
@@ -154,7 +155,7 @@ Material:
     - _AdvancedTab: 1
     - _AlphaClipping: 0
     - _AlphaCutoff: 0.5
-    - _Artistic: 0
+    - _Artistic: 3
     - _ArtisticFrequency: 1
     - _ArtisticProjection: 1
     - _Blend: 0
