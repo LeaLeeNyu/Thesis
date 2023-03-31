@@ -48,22 +48,22 @@ Material:
     m_Ints: []
     m_Floats:
     - _BaseNoiseScale: 0.001
-    - _BaseNoiseSpeed: 20
+    - _BaseNoiseSpeed: 1
     - _BaseNoiseStrength: 1
     - _BowlShape: -0.7
-    - _EdgeMax: 0.9
+    - _EdgeMax: 0.5
     - _EdgeMin: -0.08
     - _Emission: 1
     - _FresnelPower: 3
     - _FresnelStrength: 2
     - _NoisePower: 2
-    - _NoiseScale: 0.01
-    - _NoiseSpeed: 30
+    - _NoiseScale: 0.1
+    - _NoiseSpeed: 5
     - _NoiseStrength: 50
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Strength: 80
-    - _TransparentRange: 100
+    - _Strength: 6
+    - _TransparentRange: 5
     m_Colors:
     - _ColorDown: {r: 0, g: 0, b: 0, a: 0}
     - _ColorUp: {r: 0.6886792, g: 0.6886792, b: 0.6886792, a: 0}

@@ -65,8 +65,8 @@ Material:
     - _Strength: 6
     - _TransparentRange: 5
     m_Colors:
-    - _ColorDown: {r: 0.3490566, g: 0.3490566, b: 0.3490566, a: 0}
-    - _ColorUp: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 0}
+    - _ColorDown: {r: 0, g: 0, b: 0, a: 0}
+    - _ColorUp: {r: 0.6901961, g: 0.6901961, b: 0.6901961, a: 0}
     - _Remap: {r: 0, g: 1, b: -0.5, a: 0.5}
     - _RotationOffset: {r: 1, g: 0, b: 0, a: 90}
   m_BuildTextureStacks: []
