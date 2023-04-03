@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.XR;
 
@@ -27,8 +28,12 @@ public class ControllerInputManager : MonoBehaviour
     [SerializeField] private string leftHandName;
     [SerializeField] private string rightHandName;
 
-    public event UnityAction thumbnileClickE = delegate { };
+    //thumbnileClick
+    public static event UnityAction thumbnileClickE = delegate { };
     private bool thumbnileClick = false;
+    //button pressed
+    public static event UnityAction buttonPressedE = delegate { };
+    private bool buttonPressed = false;
 
     void Start()
     {
@@ -90,6 +95,21 @@ public class ControllerInputManager : MonoBehaviour
         else if(!isClick)
         {
             thumbnileClick = false;
+        }
+    }
+
+    void ButtonPressed()
+    {
+        _targetDevice.TryGetFeatureValue(CommonUsages.primary2DAxisClick, out bool isPressed);
+
+        if (isPressed )
+        {
+            buttonPressedE.Invoke();
+            buttonPressed = true;
+        }
+        else if (!isPressed)
+        {
+            buttonPressed = false;
         }
     }
 

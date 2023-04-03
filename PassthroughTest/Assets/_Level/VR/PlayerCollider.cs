@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//this script makes the collider turn around with headset
 public class PlayerCollider : MonoBehaviour
 {
     [SerializeField] private Camera mainCamera;
