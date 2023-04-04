@@ -68,7 +68,7 @@
 		MKFragmentOutput mkFragmentOutput;
 		INITIALIZE_STRUCT(MKFragmentOutput, mkFragmentOutput);
 
-		#if defined(MK_URP) && defined(LOD_FADE_CROSSFADE)
+		#ifdef MK_LOD_FADE_CROSSFADE
 			LODFadeCrossFade(vertexOutput.svPositionClip);
 		#endif
 

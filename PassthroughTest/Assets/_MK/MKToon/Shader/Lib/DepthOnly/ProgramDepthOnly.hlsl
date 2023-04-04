@@ -61,7 +61,7 @@
 		UNITY_SETUP_INSTANCE_ID(vertexOutput);
 		UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(vertexOutput);
 
-		#if defined(MK_URP) && defined(LOD_FADE_CROSSFADE)
+		#ifdef MK_LOD_FADE_CROSSFADE
 			LODFadeCrossFade(vertexOutput.svPositionClip);
 		#endif
 

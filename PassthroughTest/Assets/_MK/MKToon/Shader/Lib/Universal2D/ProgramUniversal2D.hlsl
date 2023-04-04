@@ -70,6 +70,6 @@
 		MKPBSData pbsData = ComputePBSData(surface, surfaceData);
 		Composite(surface, surfaceData, pbsData);
 
-    	return 0;
+    	return half4(surface.final.rgb, surface.alpha);
 	}
 #endif

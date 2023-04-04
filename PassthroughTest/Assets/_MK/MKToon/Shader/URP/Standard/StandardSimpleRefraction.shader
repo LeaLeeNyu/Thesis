@@ -24,6 +24,7 @@ Shader "MK/Toon/URP/Standard/Simple + Refraction"
 		[MainColor] _AlbedoColor ("", Color) = (1,1,1,1)
 		_AlphaCutoff ("", Range(0, 1)) = 0.5
 		[MainTexture] _AlbedoMap ("", 2D) = "white" {}
+		_AlbedoMapIntensity ("", Range(0, 1)) = 1.0
 		[MKToonColorRGB] _SpecularColor ("", Color) = (1, 1, 1, 1)
 		_SpecularMap ("", 2D) = "white" {}
 		_Smoothness ("", Range(0, 1)) = 0.5
@@ -103,6 +104,7 @@ Shader "MK/Toon/URP/Standard/Simple + Refraction"
 		[Enum(MK.Toon.ZWrite)] _ZWrite ("", int) = 1.0
 		[Enum(MK.Toon.ZTest)] _ZTest ("", int) = 4.0
 		[Toggle] _WrappedLighting ("", int) = 1
+		_IndirectFade ("", Range(0.0, 1.0)) = 1.0
 		[Toggle] _ReceiveShadows("", Int) = 1
 		[Enum(MK.Toon.SpecularSimple)] _Specular ("", int) = 0
 		[MKToonSpecularIntensity] _SpecularIntensity ("", Float) = 1.0

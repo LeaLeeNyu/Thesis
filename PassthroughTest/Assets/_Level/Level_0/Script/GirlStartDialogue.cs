@@ -9,7 +9,7 @@ public class GirlStartDialogue : MonoBehaviour
 {
     public Dialogue girlDialogue;
     private DialogueSystem dialogueSystem;
-    private bool stateDialogue = false;
+    private bool startDialogue = false;
 
     public InputActionReference dialoguRef;
 
@@ -31,9 +31,9 @@ public class GirlStartDialogue : MonoBehaviour
     // if player collide with girl, girl start talking
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && !startDialogue)
         {
-            stateDialogue = true;
+            startDialogue = true;
             dialogueSystem.StartDialogue(girlDialogue);
             Debug.Log("player");
         }
@@ -44,7 +44,7 @@ public class GirlStartDialogue : MonoBehaviour
 
     private void NextSentence(InputAction.CallbackContext context)
     {
-        if(stateDialogue)
+        if(startDialogue && !dialogueSystem.end)
         {
             dialogueSystem.DisplayNextSentence();
         }       

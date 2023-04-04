@@ -67,6 +67,9 @@ namespace MK.Toon.Editor
         protected MaterialProperty _albedoColor;
         protected MaterialProperty _alphaCutoff;
         protected MaterialProperty _albedoMap;
+        #if MK_ALBEDO_MAP_INTENSITY
+        protected MaterialProperty _albedoMapIntensity;
+        #endif
 
         /////////////////
         // Stylize     //
@@ -146,6 +149,9 @@ namespace MK.Toon.Editor
             _albedoColor = FindProperty(Properties.albedoColor.uniform.name, props);
             _alphaCutoff = FindProperty(Properties.alphaCutoff.uniform.name, props);
             _albedoMap = FindProperty(Properties.albedoMap.uniform.name, props);
+            #if MK_ALBEDO_MAP_INTENSITY
+            _albedoMapIntensity = FindProperty(Properties.albedoMapIntensity.uniform.name, props);
+            #endif
 
             _colorGrading = FindProperty(Properties.colorGrading.uniform.name, props);
             _contrast = FindProperty(Properties.contrast.uniform.name, props);
@@ -439,7 +445,18 @@ namespace MK.Toon.Editor
 
         protected virtual void DrawAlbedoMap(MaterialEditor materialEditor)
         {
+            #if MK_ALBEDO_MAP_INTENSITY
+            if(_albedoMap.textureValue != null)
+            {
+                materialEditor.TexturePropertySingleLine(UI.albedoMap, _albedoMap, _albedoMapIntensity, _albedoColor);
+            }
+            else
+            {
+                materialEditor.TexturePropertySingleLine(UI.albedoMap, _albedoMap, _albedoColor);
+            }
+            #else
             materialEditor.TexturePropertySingleLine(UI.albedoMap, _albedoMap, _albedoColor);
+            #endif
         }
 
         protected void DrawAlbedoScaleTransform(MaterialEditor materialEditor)
@@ -779,6 +796,7 @@ namespace MK.Toon.Editor
             _outline.ManageKeywordsOutline(material);
             _outline.ManageKeywordsOutlineNoise(material);
             _outline.ManageKeywordsOutlineMap(material);
+            _outline.ManageKeywordsOutlineData(material);
             _refraction.ManageKeywordsRefractionMap(material);
             _refraction.ManageKeywordsIndexOfRefraction(material);
         }

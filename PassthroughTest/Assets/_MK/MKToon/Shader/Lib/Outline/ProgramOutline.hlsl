@@ -42,6 +42,12 @@
 			vertexInput.vertex.xyz = VertexAnimation(PASS_VERTEX_ANIMATION_ARG(_VertexAnimationMap, PASS_VERTEX_ANIMATION_UV(vertexOutput.uv), _VertexAnimationIntensity, _VertexAnimationFrequency.xyz, vertexInput.vertex.xyz, vertexInput.normal));
 		#endif
 
+		#ifndef MK_LEGACY_SCREEN_SCALING
+			#if defined(MK_MULTI_PASS_STEREO_SCALING) || defined(UNITY_SINGLE_PASS_STEREO) || defined(UNITY_STEREO_INSTANCING_ENABLED) || defined(UNITY_STEREO_MULTIVIEW_ENABLED)
+				_OutlineSize *= 0.5;
+			#endif
+		#endif
+
 		#ifdef MK_OUTLINE_FADING
 			float dist = distance(CAMERA_POSITION_WORLD , mul(MATRIX_M, float4(vertexInput.vertex.xyz, 1.0)).xyz);
 			#if defined(MK_OUTLINE_FADING_EXPONENTIAL)
@@ -81,16 +87,25 @@
 			vertexOutput.svPositionClip = ComputeWorldToClipSpace(positionWorld);
 		#elif defined(MK_OUTLINE_HULL_CLIP)
 			//Make it pixel perfect and SCALED on different aspects and resolutions
-			half scaledAspect = SafeDivide(REFERENCE_ASPECT.x, SafeDivide(_ScreenParams.x, _ScreenParams.y));
-			half scaledResolution = SafeDivide(_ScreenParams.x, REFERENCE_RESOLUTION.x);
 			vertexOutput.svPositionClip = ComputeObjectToClipSpace(vertexInput.vertex.xyz);
+
+			#ifndef MK_LEGACY_SCREEN_SCALING
+				half oScale;
+				oScale = ScaleToFitOrthograpicSize(vertexOutput.svPositionClip.w);
+				half scale = ScaleToFitResolution(REFERENCE_ASPECT, REFERENCE_RESOLUTION, _ScreenParams.xy);
+			#else
+				half oScale = 1;
+				half scaledAspect = SafeDivide(REFERENCE_ASPECT.x, SafeDivide(_ScreenParams.x, _ScreenParams.y));
+				half scaledResolution = SafeDivide(_ScreenParams.x, REFERENCE_RESOLUTION.x);
+				half scale = scaledAspect * scaledResolution;
+			#endif
 
 			#if defined(MK_OUTLINE_DATA_UV7)
 				half3 normalBakedClip = ComputeNormalObjectToClipSpace(vertexInput.normalBaked.xyz);
-				vertexOutput.svPositionClip.xy += 2 * _OutlineSize * SafeDivide(normalBakedClip.xy, _ScreenParams.xy) * scaledAspect * scaledResolution;
+				vertexOutput.svPositionClip.xy += 2 * oScale * _OutlineSize * SafeDivide(normalBakedClip.xy, _ScreenParams.xy) * scale;
 			#else
 				half3 normalClip = ComputeNormalObjectToClipSpace(vertexInput.normal.xyz);
-				vertexOutput.svPositionClip.xy += 2 * _OutlineSize * SafeDivide(normalClip.xy, _ScreenParams.xy) * scaledAspect * scaledResolution;
+				vertexOutput.svPositionClip.xy += 2 * oScale * _OutlineSize * SafeDivide(normalClip.xy, _ScreenParams.xy) * scale;
 			#endif
 		#else
 			vertexOutput.svPositionClip = ComputeObjectToClipSpace(vertexInput.vertex.xyz);
@@ -133,7 +148,7 @@
 		MKFragmentOutput mkFragmentOutput;
 		INITIALIZE_STRUCT(MKFragmentOutput, mkFragmentOutput);
 
-		#if defined(MK_URP) && defined(LOD_FADE_CROSSFADE)
+		#ifdef MK_LOD_FADE_CROSSFADE
 			LODFadeCrossFade(vertexOutputLight.SV_CLIP_POS);
 		#endif
 

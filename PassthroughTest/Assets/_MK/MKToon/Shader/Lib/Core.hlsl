@@ -11,7 +11,7 @@
 
 	#if defined(MK_URP)
 		#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
-		#if defined(LOD_FADE_CROSSFADE)
+		#if UNITY_VERSION >= 202220 && defined(LOD_FADE_CROSSFADE)
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/LODCrossFade.hlsl"
 		#endif
 	#elif defined(MK_LWRP)
@@ -36,7 +36,7 @@
 	struct MKFragmentOutput
 	{
 		half4 svTarget0 : SV_Target0;
-		#ifdef _WRITE_RENDERING_LAYERS
+		#if UNITY_VERSION >= 202220 && defined(_WRITE_RENDERING_LAYERS)
 			float4 svTarget1 : SV_Target1;
 		#endif
 	};

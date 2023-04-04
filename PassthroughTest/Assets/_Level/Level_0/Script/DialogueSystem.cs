@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 
 public class DialogueSystem : MonoBehaviour
 {
 
     private Queue<string> sentences;
+    private Queue<string> animationP;
 
     private DialogueSystem instance;
 
@@ -15,29 +17,45 @@ public class DialogueSystem : MonoBehaviour
 
     public GameObject dialogueCanvas;
 
-    // to control when the dialogue shows up, the player cannot move
-    public bool noDialogue = true;
+    //control animation
+    private int dialougueAmount;
+    private Animator girlAnimator;
 
+    //control whether the dialogue ends
+    public bool end = false;
+
+
+    private void Awake()
+    {
+        girlAnimator = GetComponent<Animator>();
+    }
 
     void Start()
     {
-        //create a queue for stroing dialogue sentences
+        //create a queue for stroing dialogue dialogues
         sentences = new Queue<string>();
+        //create a queue for animation parameter
+        animationP = new Queue<string>();
     }
 
-    //input the dialogue sentences into queue, and output the first sentence in the queue
+    //input the dialogue dialogues into queue, and output the first sentence in the queue
     public void StartDialogue(Dialogue dialogue)
     {
-
-        noDialogue = false;
-
-        // clear all the object in sentences
+        dialougueAmount = dialogue.dialogues.Length;
+        Debug.Log(dialougueAmount);
+        // clear all the object in dialogues
         sentences.Clear();
+        animationP.Clear();
 
-        // enqueue the sentences in Dialogue script
-        foreach (string sentence in dialogue.sentences)
+        // enqueue the dialogues in Dialogue script
+        foreach (string sentence in dialogue.dialogues)
         {
             sentences.Enqueue(sentence);
+        }
+        //enqueue the animation paramter in Dialogue script
+        foreach (string animationParameter in dialogue.animationParameters)
+        {
+            animationP.Enqueue(animationParameter);
         }
 
         DisplayNextSentence();
@@ -53,16 +71,22 @@ public class DialogueSystem : MonoBehaviour
             return;
         }
 
+        // Change animation
+        //Debug.Log(sentences.Count);
+        string nextAnimation = animationP.Dequeue();
+        girlAnimator.SetBool(nextAnimation, true);
+
         // output the first sentence in the queue
         string dialogueSentence = sentences.Dequeue();
         this.dialogueSentence.text = dialogueSentence;
         //Debug.Log(dialogueSentence);
+
     }
 
     void EndDialogue()
     {
-        //The dialogue ends.
-        noDialogue = true;
+        dialougueAmount = 0;
+        end = true;
     }
 
 }

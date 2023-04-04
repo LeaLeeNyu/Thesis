@@ -80,4 +80,34 @@
 		#define MK_STYLIZE_SYSTEM_SHADOWS
 	#endif
 	$$*/
+
+	//Enable Albedo Map Intensity
+	//%%MK_ALBEDO_MAP_INTENSITY
+	/*!!
+	#ifndef MK_ALBEDO_MAP_INTENSITY
+		#define MK_ALBEDO_MAP_INTENSITY
+	#endif
+	$$*/
+	
+	//Enable Legacy Screen Spaced Scaling
+	//%%MK_LEGACY_SCREEN_SCALING
+	/*!!
+	#ifndef MK_LEGACY_SCREEN_SCALING
+		#define MK_LEGACY_SCREEN_SCALING
+	#endif
+	$$*/
+
+	//Enable multi pass scaling for screen space
+	//%%MK_MULTI_PASS_STEREO_SCALING
+	/*!!
+	#ifndef MK_MULTI_PASS_STEREO_SCALING
+		#define MK_MULTI_PASS_STEREO_SCALING
+	#endif
+	$$*/
+
+	//feature parsing does not detect uniforms currently
+	//therefor they should be enabled here
+	#ifdef MK_ALBEDO_MAP_INTENSITY
+		uniform half _AlbedoMapIntensity;
+	#endif
 #endif

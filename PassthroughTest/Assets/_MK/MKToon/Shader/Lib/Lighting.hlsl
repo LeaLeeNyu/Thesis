@@ -91,6 +91,11 @@
 		#if defined(MK_URP) && UNITY_VERSION >= 202120
 			uint layerMask;
 		#endif
+		#ifdef MK_LEGACY_RP
+			#ifdef MK_HANDLE_SHADOWS_BLENDING_IN_GI
+				half giBlend;
+			#endif
+		#endif
 	};
 
 	struct MKGI
@@ -302,72 +307,81 @@
 	}
 
 	//GI functions should match input
-	inline MKGI MKGlobalIllumination(MKGlossyEnvironmentData glossyED, half occlusion, MKLight mkLight, float3 positionWorld, half3 viewWorld, half3 normalWorld, float4 lightmapUVAndSH)
+	inline MKGI MKGlobalIllumination(in MKGlossyEnvironmentData glossyED, half occlusion, MKLight mkLight, in MKSurfaceData surfaceData)
 	{
 		MKGI gi;
 		INITIALIZE_STRUCT(MKGI, gi);
-
-		#if defined(MK_URP) || defined(MK_LWRP)
-			#if defined(LIGHTMAP_ON) && defined(DYNAMICLIGHTMAP_ON)
-				gi.diffuse = SampleLightmap(lightmapUVAndSH.xy, lightmapUVAndSH.zw, normalWorld);
-			#elif defined(DYNAMICLIGHTMAP_ON)
-				gi.diffuse = SampleLightmap(0, lightmapUVAndSH.zw, normalWorld);
-			#elif defined(LIGHTMAP_ON)
-				#if UNITY_VERSION >= 202120
-					gi.diffuse = SampleLightmap(lightmapUVAndSH.xy, 0, normalWorld);
+		#ifdef MK_INDIRECT
+			#if defined(MK_URP) || defined(MK_LWRP)
+				#if defined(LIGHTMAP_ON) && defined(DYNAMICLIGHTMAP_ON)
+					gi.diffuse = SampleLightmap(surfaceData.lightmapUV.xy, surfaceData.lightmapUV.zw, surfaceData.normalWorld);
+				#elif defined(DYNAMICLIGHTMAP_ON)
+					gi.diffuse = SampleLightmap(0, surfaceData.lightmapUV.zw, surfaceData.normalWorld);
+				#elif defined(LIGHTMAP_ON)
+					#if UNITY_VERSION >= 202120
+						gi.diffuse = SampleLightmap(surfaceData.lightmapUV.xy, 0, surfaceData.normalWorld);
+					#else
+						gi.diffuse = SampleLightmap(surfaceData.lightmapUV.xy, surfaceData.normalWorld);
+					#endif
 				#else
-					gi.diffuse = SampleLightmap(lightmapUVAndSH.xy, normalWorld);
+					gi.diffuse = SampleSHPixel(surfaceData.lightmapUV.rgb, surfaceData.normalWorld);
 				#endif
+
+				gi.diffuse *= occlusion;
+				#if UNITY_VERSION >= 202220
+					gi.specular = GlossyEnvironmentReflection(glossyED.reflectDirection, surfaceData.positionWorld, glossyED.roughness, occlusion, surfaceData.screenUV.xy);
+				#else
+					gi.specular = GlossyEnvironmentReflection(glossyED.reflectDirection, glossyED.roughness, occlusion);
+				#endif
+
+				return gi;
 			#else
-				gi.diffuse = SampleSHPixel(lightmapUVAndSH.rgb, normalWorld);
+				UnityGIInput giInput;
+				UnityLight unityLight;
+				unityLight.color = mkLight.color;
+				unityLight.dir = mkLight.dirWorld;
+				giInput.light = unityLight;
+				giInput.worldPos = surfaceData.positionWorld;
+				#ifdef MK_ENVIRONMENT_REFLECTIONS_AMBIENT
+					giInput.worldViewDir = -surfaceData.viewWorld;
+				#else
+					giInput.worldViewDir = 0;
+				#endif
+				giInput.atten = mkLight.attenuation;
+				#if defined(LIGHTMAP_ON) || defined(DYNAMICLIGHTMAP_ON)
+					giInput.ambient = 0;
+					giInput.lightmapUV = surfaceData.lightmapUV;
+				#endif
+				#if UNITY_SHOULD_SAMPLE_SH && !UNITY_SAMPLE_FULL_SH_PER_PIXEL
+					giInput.ambient = surfaceData.lightmapUV.rgb;
+					giInput.lightmapUV = 0;
+				#endif
+
+				giInput.probeHDR[0] = unity_SpecCube0_HDR;
+				giInput.probeHDR[1] = unity_SpecCube1_HDR;
+				#if defined(UNITY_SPECCUBE_BLENDING) || defined(UNITY_SPECCUBE_BOX_PROJECTION)
+					giInput.boxMin[0] = unity_SpecCube0_BoxMin; // .w holds lerp value for blending
+				#endif
+				#ifdef UNITY_SPECCUBE_BOX_PROJECTION
+					giInput.boxMax[0] = unity_SpecCube0_BoxMax;
+					giInput.probePosition[0] = unity_SpecCube0_ProbePosition;
+					giInput.boxMax[1] = unity_SpecCube1_BoxMax;
+					giInput.boxMin[1] = unity_SpecCube1_BoxMin;
+					giInput.probePosition[1] = unity_SpecCube1_ProbePosition;
+				#endif
+
+				//indirect specular depends on the _GLOSSYREFLECTIONS_OFF keyword by default
+				//however its not defined in the non glossy MKGI function and we get no indirect specular via the unity_IndirectSpecColor RGB
+				//so we always create the glossy environment
+				Unity_GlossyEnvironmentData uge;
+				uge.roughness = glossyED.roughness;
+				uge.reflUVW = glossyED.reflectDirection;
+
+				UnityGI unityGI = UnityGlobalIllumination(giInput, occlusion, surfaceData.normalWorld, uge);
+
+				gi.diffuse = unityGI.indirect.diffuse;
+				gi.specular = unityGI.indirect.specular;
 			#endif
-
-			gi.diffuse *= occlusion;
-			gi.specular = GlossyEnvironmentReflection(glossyED.reflectDirection, glossyED.roughness, occlusion);
-
-			return gi;
-		#else
-			UnityGIInput giInput;
-			UnityLight unityLight;
-			unityLight.color = mkLight.color;
-			unityLight.dir = mkLight.dirWorld;
-			giInput.light = unityLight;
-			giInput.worldPos = positionWorld;
-			giInput.worldViewDir = -viewWorld;
-			giInput.atten = mkLight.attenuation;
-			#if defined(LIGHTMAP_ON) || defined(DYNAMICLIGHTMAP_ON)
-				giInput.ambient = 0;
-				giInput.lightmapUV = lightmapUVAndSH;
-			#endif
-			#if UNITY_SHOULD_SAMPLE_SH && !UNITY_SAMPLE_FULL_SH_PER_PIXEL
-				giInput.ambient = lightmapUVAndSH.rgb;
-				giInput.lightmapUV = 0;
-			#endif
-
-			giInput.probeHDR[0] = unity_SpecCube0_HDR;
-			giInput.probeHDR[1] = unity_SpecCube1_HDR;
-			#if defined(UNITY_SPECCUBE_BLENDING) || defined(UNITY_SPECCUBE_BOX_PROJECTION)
-				giInput.boxMin[0] = unity_SpecCube0_BoxMin; // .w holds lerp value for blending
-			#endif
-			#ifdef UNITY_SPECCUBE_BOX_PROJECTION
-				giInput.boxMax[0] = unity_SpecCube0_BoxMax;
-				giInput.probePosition[0] = unity_SpecCube0_ProbePosition;
-				giInput.boxMax[1] = unity_SpecCube1_BoxMax;
-				giInput.boxMin[1] = unity_SpecCube1_BoxMin;
-				giInput.probePosition[1] = unity_SpecCube1_ProbePosition;
-			#endif
-
-			//indirect specular depends on the _GLOSSYREFLECTIONS_OFF keyword by default
-			//however its not defined in the non glossy MKGI function and we get no indirect specular via the unity_IndirectSpecColor RGB
-			//so we always create the glossy environment
-			Unity_GlossyEnvironmentData uge;
-			uge.roughness = glossyED.roughness;
-			uge.reflUVW = glossyED.reflectDirection;
-
-			UnityGI unityGI = UnityGlobalIllumination(giInput, occlusion, normalWorld, uge);
-
-			gi.diffuse = unityGI.indirect.diffuse;
-			gi.specular = unityGI.indirect.specular;
 
 			return gi;
 		#endif
@@ -426,7 +440,7 @@
 			lightData.BoLHV = dot(surfaceData.bitangentWorld, lightData.LHV);
 		#endif
 		#ifdef MK_N_DOT_LHV
-			lightData.NoLHV = dot(surfaceData.normalWorld, lightData.LHV);
+			lightData.NoLHV = saturate(dot(surfaceData.normalWorld, lightData.LHV));
 		#endif
 		#ifdef MK_L_DOT_LHV
 			lightData.LoLHV = dot(light.dirWorld, lightData.LHV);
@@ -560,6 +574,18 @@
 				#endif
 
 				UNITY_LIGHT_ATTENUATION(atten, vertexOutputLight, surfaceData.positionWorld);
+
+				#ifdef MK_HANDLE_SHADOWS_BLENDING_IN_GI
+					mkLight.giBlend = 0;
+					atten = SHADOW_ATTENUATION(vertexOutputLight);
+					float shadowFade = UnityComputeShadowFade(UnityComputeShadowFadeDistance(surfaceData.positionWorld, dot(_WorldSpaceCameraPos - surfaceData.positionWorld, UNITY_MATRIX_V[2].xyz)));
+					float bakedOcclusion = UnitySampleBakedOcclusion(surfaceData.lightmapUV.xy, surfaceData.positionWorld);
+					atten = UnityMixRealtimeAndBakedShadows(atten, bakedOcclusion, shadowFade);
+					#if defined(LIGHTMAP_SHADOW_MIXING) && !defined(SHADOWS_SHADOWMASK)
+						mkLight.giBlend = atten;
+					#endif
+				#endif
+
 				mkLight.attenuation = atten;
 				mkLight.shadowAttenuation = SHADOW_ATTENUATION(vertexOutputLight);
 				mkLight.color = _LightColor0.rgb;
@@ -782,9 +808,9 @@
 				#endif
 
 				#if defined(MK_ENVIRONMENT_REFLECTIONS_ADVANCED)
-					gi = MKGlobalIllumination(ged, surface.occlusion.r, light, surfaceData.positionWorld, surfaceData.viewWorld, surfaceData.normalWorld, surfaceData.lightmapUV);
+					gi = MKGlobalIllumination(ged, surface.occlusion.r, light, surfaceData);
 				#elif defined(MK_ENVIRONMENT_REFLECTIONS_AMBIENT)
-					gi = MKGlobalIllumination(ged, surface.occlusion.r, light, surfaceData.positionWorld, 0, surfaceData.normalWorld, surfaceData.lightmapUV);
+					gi = MKGlobalIllumination(ged, surface.occlusion.r, light, surfaceData);
 				#endif
 				#if defined(MK_URP) || defined(MK_LWRP)
 					Light urpLight;
@@ -820,6 +846,10 @@
 			#endif
 			#if defined(MK_ENVIRONMENT_REFLECTIONS)
 				surface.indirect += Rcp(pbsData.roughnessPow4 + 1.0) * gi.specular * iL;
+			#endif
+
+			#ifdef MK_PBS
+				_IndirectFade = lerp(_IndirectFade, pbsData.reflectivity, pbsData.reflectivity);
 			#endif
 
 			#ifdef MK_EMISSION
@@ -861,6 +891,12 @@
 			LIGHT_STYLE_RAW_2D(diffuse, light.distanceAttenuation, _LightThreshold, _DiffuseSmoothness * 0.5, _DiffuseSmoothness * 0.5, _DiffuseRamp, SAMPLER_CLAMPED_MAIN);
 			#ifndef MK_STYLIZE_SYSTEM_SHADOWS
 				diffuse *= light.attenuation;
+			#endif
+
+			#ifdef MK_LEGACY_RP
+				#ifdef MK_HANDLE_SHADOWS_BLENDING_IN_GI
+					diffuse *= saturate(1.0 - light.giBlend);
+				#endif
 			#endif
 			return diffuse;
 		#else

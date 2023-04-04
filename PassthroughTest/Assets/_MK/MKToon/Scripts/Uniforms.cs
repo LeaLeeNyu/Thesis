@@ -29,6 +29,9 @@ namespace MK.Toon
         public static readonly Uniform albedoColor                 = new Uniform("_AlbedoColor");
         public static readonly Uniform alphaCutoff                 = new Uniform("_AlphaCutoff");
         public static readonly Uniform albedoMap                   = new Uniform("_AlbedoMap");
+        #if MK_ALBEDO_MAP_INTENSITY
+        public static readonly Uniform albedoMapIntensity          = new Uniform("_AlbedoMapIntensity");
+        #endif
         public static readonly Uniform specularColor               = new Uniform("_SpecularColor");
         public static readonly Uniform metallic                    = new Uniform("_Metallic");
         public static readonly Uniform smoothness                  = new Uniform("_Smoothness");
@@ -138,6 +141,7 @@ namespace MK.Toon
         public static readonly Uniform lightTransmissionIntensity = new Uniform("_LightTransmissionIntensity");
         public static readonly Uniform environmentReflections     = new Uniform("_EnvironmentReflections");
         public static readonly Uniform fresnelHighlights          = new Uniform("_FresnelHighlights");
+        public static readonly Uniform IndirectFade               = new Uniform("_IndirectFade");
         public static readonly Uniform stencil                    = new Uniform("_Stencil");
         public static readonly Uniform renderPriority             = new Uniform("_RenderPriority");
         public static readonly Uniform stencilRef                 = new Uniform("_StencilRef");

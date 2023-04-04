@@ -44,6 +44,13 @@
 		#endif
 	#endif
 
+	#if defined(SHADOWS_SCREEN) && defined(LIGHTMAP_ON)
+		#define MK_HANDLE_SHADOWS_BLENDING_IN_GI 1
+		#ifndef HANDLE_SHADOWS_BLENDING_IN_GI
+			#define HANDLE_SHADOWS_BLENDING_IN_GI
+		#endif
+	#endif
+
 	#include "../Core.hlsl"
 
 	#include "ProgramForward.hlsl"

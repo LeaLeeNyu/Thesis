@@ -25,6 +25,7 @@ Shader "MK/Toon/URP/Standard/Physically Based"
 		[MainColor] _AlbedoColor ("", Color) = (1,1,1,1)
 		_AlphaCutoff ("", Range(0, 1)) = 0.5
 		[MainTexture] _AlbedoMap ("", 2D) = "white" {}
+		_AlbedoMapIntensity ("", Range(0, 1)) = 1.0
 		[MKToonColorRGB] _SpecularColor ("", Color) = (0.203125, 0.203125, 0.203125, 1)
 		_SpecularMap ("", 2D) = "white" {}
 		_Metallic ("", Range(0, 1)) = 0
@@ -140,6 +141,7 @@ Shader "MK/Toon/URP/Standard/Physically Based"
 		[Enum(MK.Toon.ZTest)] _ZTest ("", int) = 4.0
 		[Enum(MK.Toon.Diffuse)] _Diffuse ("", int) = 0
 		[Toggle] _WrappedLighting ("", int) = 1
+		_IndirectFade ("", Range(0.0, 1.0)) = 1.0
 		[Toggle] _ReceiveShadows("", Int) = 1
 		[Enum(MK.Toon.Specular)] _Specular ("", int) = 1
 		[MKToonSpecularIntensity] _SpecularIntensity ("", Float) = 1.0

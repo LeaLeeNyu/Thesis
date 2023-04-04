@@ -36,6 +36,39 @@
 		return frac(SafeDivide(round(t * f), f));
 	}
 
+	inline half ScaleToFitResolution(half2 referenceAspect, half2 referenceResolution, half2 resolution)
+	{
+		half aspect = SafeDivide(resolution.x, resolution.y);
+		half scaledAspect = SafeDivide(max(referenceAspect.x, referenceAspect.y), aspect);
+		half scaledResolution = lerp((resolution.y / referenceResolution.y), (resolution.x / referenceResolution.x), saturate(resolution.y / resolution.x));
+		scaledAspect = lerp(1.0 / scaledAspect, scaledAspect, saturate(aspect));
+		return scaledAspect * scaledResolution;
+	}
+
+	inline half ScaleToFitOrthograpicSize(float clipScale)
+	{
+		half orthographicScale = 1;
+		UNITY_BRANCH
+		if(unity_OrthoParams.w > 0)
+			orthographicScale = clipScale / unity_OrthoParams.y;
+		return orthographicScale;
+	}
+
+	inline half ScaleToFitOrthographicUV(float clipScale)
+	{
+		half scaleFactor;
+		#if defined(MK_MULTI_PASS_STEREO_SCALING) || defined(UNITY_SINGLE_PASS_STEREO) || defined(UNITY_STEREO_INSTANCING_ENABLED) || defined(UNITY_STEREO_MULTIVIEW_ENABLED)
+			scaleFactor = 2.0;
+		#else
+			scaleFactor = 1.0;
+		#endif
+		half orhtographicUVScale = 1;
+		UNITY_BRANCH
+		if(unity_OrthoParams.w > 0)
+			orhtographicUVScale = 2.0 * clipScale * unity_OrthoParams.y;
+		return orhtographicUVScale * scaleFactor;
+	}
+
 	inline half SoftFade(float near, float far, float4 ndc)
 	{
 		//near OR far has to be > 0.0

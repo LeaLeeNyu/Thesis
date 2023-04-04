@@ -137,7 +137,7 @@
 		MKFragmentOutput mkFragmentOutput;
 		INITIALIZE_STRUCT(MKFragmentOutput, mkFragmentOutput);
 
-		#if defined(MK_URP) && defined(LOD_FADE_CROSSFADE)
+		#ifdef MK_LOD_FADE_CROSSFADE
 			LODFadeCrossFade(vertexOutputLight.SV_CLIP_POS);
 		#endif
 
@@ -193,8 +193,9 @@
 							INITIALIZE_STRUCT(MKInputDataWrapper, inputData);
 							inputData.normalizedScreenSpaceUV = surfaceData.screenUV.xy;
 							inputData.positionWS = surfaceData.positionWorld;
-							for (uint lightIndex = 0; lightIndex < min(_AdditionalLightsDirectionalCount, MAX_VISIBLE_LIGHTS); lightIndex++)
+							for (uint lightIndex = 0; lightIndex < min(URP_FP_DIRECTIONAL_LIGHTS_COUNT, MAX_VISIBLE_LIGHTS); lightIndex++)
 							{
+								FORWARD_PLUS_SUBTRACTIVE_LIGHT_CHECK
 								additionalLight = ComputeAdditionalLight(lightIndex, surfaceData, vertexOutputLight);
 								additionalLightData = ComputeLightData(additionalLight, surfaceData);
 								#ifdef _LIGHT_LAYERS

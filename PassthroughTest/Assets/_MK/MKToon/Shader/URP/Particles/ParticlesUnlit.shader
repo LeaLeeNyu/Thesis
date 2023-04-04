@@ -24,6 +24,7 @@ Shader "MK/Toon/URP/Particles/Unlit"
 		[MainColor] _AlbedoColor ("", Color) = (1,1,1,1)
 		_AlphaCutoff ("", Range(0, 1)) = 0.5
 		[MainTexture] _AlbedoMap ("", 2D) = "white" {}
+		_AlbedoMapIntensity ("", Range(0, 1)) = 1.0
 
 		/////////////////
 		// Stylize     //

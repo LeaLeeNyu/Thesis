@@ -24,6 +24,7 @@ Shader "MK/Toon/URP/Standard/Unlit"
 		[MainColor] _AlbedoColor ("", Color) = (1,1,1,1)
 		_AlphaCutoff ("", Range(0, 1)) = 0.5
 		[MainTexture] _AlbedoMap ("", 2D) = "white" {}
+		_AlbedoMapIntensity ("", Range(0, 1)) = 1.0
 
 		/////////////////
 		// Stylize     //
@@ -102,7 +103,7 @@ Shader "MK/Toon/URP/Standard/Unlit"
 				ZFail [_StencilZFail]
 			}
 
-			Tags { "LightMode" = "UniversalForward" }
+			Tags { "LightMode" = "UniversalForwardOnly" }
 			Name "ForwardBase" 
 			Cull [_RenderFace]
 			Blend [_BlendSrc] [_BlendDst]

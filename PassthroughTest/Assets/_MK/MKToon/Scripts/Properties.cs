@@ -35,6 +35,9 @@ namespace MK.Toon
         public static readonly ColorProperty albedoColor                         = new ColorProperty(Uniforms.albedoColor);
         public static readonly RangeProperty alphaCutoff                         = new RangeProperty(Uniforms.alphaCutoff, 0, 1);
         public static readonly TextureProperty albedoMap                         = new TextureProperty(Uniforms.albedoMap, Keywords.albedoMap);
+        #if MK_ALBEDO_MAP_INTENSITY
+        public static readonly RangeProperty albedoMapIntensity                  = new RangeProperty(Uniforms.albedoMapIntensity, 0, 1);
+        #endif
         public static readonly TilingProperty mainTiling                         = new TilingProperty(Uniforms.albedoMap);
         public static readonly OffsetProperty mainOffset                         = new OffsetProperty(Uniforms.albedoMap);
         public static readonly ColorProperty specularColor                       = new ColorProperty(Uniforms.specularColor);
@@ -148,6 +151,7 @@ namespace MK.Toon
         public static readonly RangeProperty lightTransmissionIntensity             = new RangeProperty(Uniforms.lightTransmissionIntensity, 0);
         public static readonly EnvironmentReflectionProperty environmentReflections = new EnvironmentReflectionProperty(Uniforms.environmentReflections, Keywords.environmentReflections);
         public static readonly BoolProperty fresnelHighlights                       = new BoolProperty(Uniforms.fresnelHighlights, Keywords.fresnelHighlights);
+        public static readonly BoolProperty indirectFade                            = new BoolProperty(Uniforms.IndirectFade);
         public static readonly RenderPriorityProperty renderPriority                = new RenderPriorityProperty(Uniforms.renderPriority);
         //Stencil
         public static readonly StencilModeProperty stencil                          = new StencilModeProperty(Uniforms.stencil);

@@ -68,6 +68,7 @@
 		uniform half _RefractionDistortionFade;
 		uniform half _GoochRampIntensity;
 		uniform half _VertexAnimationIntensity;
+		uniform half _IndirectFade;
 
 		uniform half3 _DetailColor;
 		uniform half3 _SpecularColor;

@@ -13,6 +13,7 @@ using System.IO;
 using System.Linq;
 
 #if UNITY_EDITOR
+using Configuration = MK.Toon.Editor.InstallWizard.Configuration;
 namespace MK.Toon.Editor.InstallWizard
 {
     //[CreateAssetMenu(fileName = "Configuration", menuName = "MK/Install Wizard/Create Configuration Asset")]
@@ -160,12 +161,16 @@ namespace MK.Toon.Editor.InstallWizard
         private readonly static List<GlobalShaderFeatureBase> _globalShaderFeaturesTemplate = new List<GlobalShaderFeatureBase>()
         {
             //keep features in sync with the shader files
+            new GlobalShaderFeature(GlobalShaderFeatureMode.Off, new List<string>() { "MK_ALBEDO_MAP_INTENSITY_OFF", "MK_ALBEDO_MAP_INTENSITY" }, new List<string>() { "MK_ALBEDO_MAP_INTENSITY_OFF", "MK_ALBEDO_MAP_INTENSITY" }, "Albedo Map Intensity", "Enables an albedo intensity to control the intensity of the albedo map into the rendering. 0 = black, 1 = full albedo"),
             new GlobalShaderFeature(GlobalShaderFeatureMode.Off, new List<string>() { "MK_COMBINE_VERTEX_COLOR_WITH_ALBEDO_MAP_OFF", "MK_COMBINE_VERTEX_COLOR_WITH_ALBEDO_MAP" }, new List<string>() {}, "Multiply vertex color with albedo", "Multiplies vertex color into the albedo Color."),
             new GlobalShaderFeatureOutlineFading(MGlobalShaderFeatureOutlineFadingMode.Off, new List<string>() { "MK_OUTLINE_FADING_OFF", "MK_OUTLINE_FADING_LINEAR", "MK_OUTLINE_FADING_EXPONENTIAL", "MK_OUTLINE_FADING_INVERSE_EXPONENTIAL" }, new List<string>() { "MK_NULL", "MK_TOON_OUTLINE_FADING_LINEAR", "MK_TOON_OUTLINE_FADING_EXPONENTIAL", "MK_TOON_OUTLINE_FADING_INVERSE_EXPONENTIAL" }, "Outline Distance Fading", "Enable outline distance based fading."),
             new GlobalShaderFeature(GlobalShaderFeatureMode.Off, new List<string>() { "MK_POINT_FILTERING_OFF", "MK_POINT_FILTERING" }, new List<string>() {}, "Force Point Filtering", "Forces point filtering on textures."),
             new GlobalShaderFeature(GlobalShaderFeatureMode.Off, new List<string>() { "MK_DISSOLVE_PROJECTION_SCREEN_SPACE_OFF", "MK_DISSOLVE_PROJECTION_SCREEN_SPACE" }, new List<string>() {}, "Dissolve Projection Screen Space", "Forces dissolve projection into screen space."),
             new GlobalShaderFeature(GlobalShaderFeatureMode.On, new List<string>() { "MK_LOCAL_ANTIALIASING_OFF", "MK_LOCAL_ANTIALIASING" }, new List<string>() {}, "Enable Local Antialiasing", "Enables local antialiasing except for mobile devices."),
             new GlobalShaderFeature(GlobalShaderFeatureMode.Off, new List<string>() { "MK_STYLIZE_SYSTEM_SHADOWS_OFF", "MK_STYLIZE_SYSTEM_SHADOWS" }, new List<string>() {}, "Stylize System Shadows", "Stylizes the system shadows like the lighting. Be careful with the thresholds!"),
+            new GlobalShaderFeature(GlobalShaderFeatureMode.Off, new List<string>() { "MK_LEGACY_SCREEN_SCALING_OFF", "MK_LEGACY_SCREEN_SCALING" }, new List<string>() {}, "Legacy Screen Scaling", "Enables legacy screen spaced scaling for artistic textures and outlines in clip space."),
+            //Conditional features
+            new GlobalShaderFeature(GlobalShaderFeatureMode.Off, new List<string>() { "MK_MULTI_PASS_STEREO_SCALING_OFF", "MK_MULTI_PASS_STEREO_SCALING" }, new List<string>() {}, "Multi Pass Scaling", "Enables correct scaling for artistic textures and outlines in clip space. \n\n This should only be enabled if your XR Render Mode is set to \"Multi Pass\". \n\n This is required because there is no workaround to detect the \"Multi Pass\" rendering mode, when using XR."),
             new GlobalShaderFeature(GlobalShaderFeatureMode.Off, new List<string>() { "MK_LINEAR_lIGHT_DISTANCE_ATTENUATION_OFF", "MK_LINEAR_lIGHT_DISTANCE_ATTENUATION" }, new List<string>() {}, "Linear Light Attenuation", "Changes the light attenuation for non-directional lights more linear (Approximately like builtin renderpipeline).")
         };
 
@@ -173,7 +178,6 @@ namespace MK.Toon.Editor.InstallWizard
         private List<GlobalShaderFeatureBase> _globalShaderFeatures = new List<GlobalShaderFeatureBase>();
         [UnityEngine.SerializeReference][HideInInspector]
         private List<GlobalShaderFeatureBase> _globalShaderFeaturesTemp = new List<GlobalShaderFeatureBase>();
-
 
         public static void BeginRegisterChangesOnGlobalShaderFeatures()
         {
@@ -234,10 +238,12 @@ namespace MK.Toon.Editor.InstallWizard
             if(isReady)
             {   
                 //linear atten is only for URP
-                for(int i = 0; i < _instance._globalShaderFeatures.Count - 1; i++)
+                for(int i = 0; i < _instance._globalShaderFeatures.Count - 2; i++)
                 {
                     _instance._globalShaderFeatures[i].DrawInspector();
                 }
+                if((int) (System.Object) _instance._globalShaderFeatures[_instance._globalShaderFeatures.Count - 3].modeEnum < 1)
+                    _instance._globalShaderFeatures[_instance._globalShaderFeatures.Count - 2].DrawInspector();
                 if(_instance._renderPipeline == RenderPipeline.Universal)
                     _instance._globalShaderFeatures[_instance._globalShaderFeatures.Count - 1].DrawInspector();
             }

@@ -273,7 +273,13 @@
 		#ifdef MK_OUTLINE_PASS
 			c = half4(color.rgb, SAMPLE_SAMPLER2D_FLIPBOOK(albedoMap, uv, blendUV).a * color.a);
 		#else
-			c = SAMPLE_SAMPLER2D_FLIPBOOK(albedoMap, uv, blendUV) * color;
+			c = SAMPLE_SAMPLER2D_FLIPBOOK(albedoMap, uv, blendUV);
+			#ifdef MK_ALBEDO_MAP_INTENSITY
+				c.rgb = lerp(half3(0,0,0), c.rgb, _AlbedoMapIntensity) * color.rgb;
+				c.a *= color.a;
+			#else
+				c *= color;
+			#endif
 		#endif
 		albedo = c.rgb;
 		#if defined(MK_ALPHA_LOOKUP)
@@ -457,21 +463,28 @@
 		#endif
 
 		#if defined(MK_ARTISTIC)
+			#if defined(MK_ARTISTIC_PROJECTION_SCREEN_SPACE)
+				#ifndef MK_LEGACY_SCREEN_SCALING
+					half orthoViewScale = ScaleToFitOrthographicUV(positionClip.w);
+				#else
+					half orthoViewScale = 1;
+				#endif
+			#endif
 			#if defined(MK_ARTISTIC_DRAWN)
 				#if defined(MK_ARTISTIC_PROJECTION_SCREEN_SPACE)
-					surfaceData.artisticUV = ComputeNormalizedScreenUV(surfaceData.screenUV, ComputeNDC(nullClip), _DrawnMapScale);
+					surfaceData.artisticUV = orthoViewScale * ComputeNormalizedScreenUV(surfaceData.screenUV, ComputeNDC(nullClip), _DrawnMapScale);
 				#else
 					surfaceData.artisticUV = surfaceData.baseUV.xy * _DrawnMapScale;
 				#endif
 			#elif defined(MK_ARTISTIC_HATCHING)
 				#if defined(MK_ARTISTIC_PROJECTION_SCREEN_SPACE)
-					surfaceData.artisticUV = ComputeNormalizedScreenUV(surfaceData.screenUV, ComputeNDC(nullClip), _HatchingMapScale);
+					surfaceData.artisticUV = orthoViewScale * ComputeNormalizedScreenUV(surfaceData.screenUV, ComputeNDC(nullClip), _HatchingMapScale);
 				#else
 					surfaceData.artisticUV = surfaceData.baseUV.xy * _HatchingMapScale;
 				#endif
 			#elif defined(MK_ARTISTIC_SKETCH)
 				#if defined(MK_ARTISTIC_PROJECTION_SCREEN_SPACE)
-					surfaceData.artisticUV = ComputeNormalizedScreenUV(surfaceData.screenUV, ComputeNDC(nullClip), _SketchMapScale);
+					surfaceData.artisticUV = orthoViewScale * ComputeNormalizedScreenUV(surfaceData.screenUV, ComputeNDC(nullClip), _SketchMapScale);
 				#else
 					surfaceData.artisticUV = surfaceData.baseUV.xy * _SketchMapScale;
 				#endif

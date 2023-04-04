@@ -93,6 +93,13 @@ namespace MK.Toon.Editor
             "Alpha Cutoff", 
             "Pixels will be discarded if the albedo alpha minus Cutoff passes a value of < 0."
         );
+        #if MK_ALBEDO_MAP_INTENSITY
+        internal static readonly GUIContent albedoMapIntensity = new GUIContent
+        (
+            "Albedo Map Intensity", 
+            "Controls the intensity of the albedo map. 0 = black, 1 = full albedo"
+        );
+        #endif
         internal static readonly GUIContent albedoMap = new GUIContent
         (
             "Albedo", 
@@ -665,7 +672,7 @@ namespace MK.Toon.Editor
         (
             "Intensity", 
             "Intensity/brightness of the transmitted light.\n\n" +
-            "A physically correct value would be 1 (Built-in lighting style). However on some lighting styles you need to exposure your specular highlights."
+            "A physically correct value would be 1 (Built-in lighting style). However on some lighting styles you need to exposure your highlights."
         );
         internal static readonly GUIContent environmentReflections = new GUIContent
         (
@@ -679,6 +686,14 @@ namespace MK.Toon.Editor
         (
             "Fresnel Highlights", 
             "Physically based fresnel highlights"
+        );
+        internal static readonly GUIContent indirectFade = new GUIContent
+        (
+            "Indirect Fade", 
+            "Fades the indirect lighting between the lit and shadowed areas based on a value between 0 and 1.\n" +
+            "0: No indirect on shadowed areas\n" +
+            "1: Indirect fully affects shadowed areas\n\n" +
+            "A physically correct value would be 1 (Indirect lighting shown on dark areas)."
         );
         internal static readonly GUIContent stencil = new GUIContent
         (

@@ -70,7 +70,13 @@
 	// Basic setup
 	/////////////////////////////////////////////////////////////////////////////////////////////
 
-	#if defined(MK_URP) && defined(_WRITE_RENDERING_LAYERS)
+	#if UNITY_VERSION >= 202220 && defined(LOD_FADE_CROSSFADE)
+		#ifndef MK_LOD_FADE_CROSSFADE
+			#define MK_LOD_FADE_CROSSFADE
+		#endif
+	#endif
+
+	#if UNITY_VERSION >= 202220 && defined(MK_URP) && defined(_WRITE_RENDERING_LAYERS)
 		#ifndef MK_WRITE_RENDERING_LAYERS
 			#define MK_WRITE_RENDERING_LAYERS
 		#endif
@@ -840,7 +846,7 @@
 		#endif
 	#endif
 
-	#if	defined(USE_CLUSTERED_LIGHTING) || defined(USE_FORWARD_PLUS) || defined(MK_REFRACTION) || defined(MK_SOFT_FADE) || defined(MK_CAMERA_FADE) || defined(MK_NORMALIZED_SCREEN_UV) || defined(MK_SCREEN_SPACE_OCCLUSION)
+	#if	(UNITY_VERSION >= 202220 && defined(MK_INDIRECT)) || defined(USE_CLUSTERED_LIGHTING) || defined(USE_FORWARD_PLUS) || defined(MK_REFRACTION) || defined(MK_SOFT_FADE) || defined(MK_CAMERA_FADE) || defined(MK_NORMALIZED_SCREEN_UV) || defined(MK_SCREEN_SPACE_OCCLUSION)
 		#ifndef MK_SCREEN_UV
 			#define MK_SCREEN_UV
 		#endif
@@ -955,7 +961,8 @@
 		#endif
 	#endif
 
-	#if defined(LIGHTMAP_ON) || defined(DYNAMICLIGHTMAP_ON) || defined(MK_ENVIRONMENT_REFLECTIONS)
+	//#if defined(LIGHTMAP_ON) || defined(DYNAMICLIGHTMAP_ON) || defined(MK_ENVIRONMENT_REFLECTIONS) || (defined( SHADOWS_SCREEN ) && defined( LIGHTMAP_ON ))
+	#ifdef MK_LIT
 		#ifndef MK_LIGHTMAP_UV
 			#define MK_LIGHTMAP_UV
 		#endif

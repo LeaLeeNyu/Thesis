@@ -12,12 +12,13 @@ using UnityEngine;
 using UnityEditor;
 
 #if UNITY_EDITOR
+using Configuration = MK.Toon.Editor.InstallWizard.Configuration;
 namespace MK.Toon.Editor.InstallWizard
 {
     public sealed class InstallWizard : EditorWindow
     {
         #pragma warning disable CS0414
-        private static readonly string _version = "3.0.14.6";
+        private static readonly string _version = "3.0.19C";
         #pragma warning restore CS0414
         
         private static readonly Vector2Int _referenceResolution = new Vector2Int(2560, 1440);
@@ -159,13 +160,16 @@ namespace MK.Toon.Editor.InstallWizard
                     {
                         VerticalSpace();
                         EditorGUILayout.LabelField("Example Scenes:");
-                        EditorGUILayout.BeginHorizontal();
                         for(int i = 0; i < examples.Length; i++)
                         {
+                            if(i % 5 == 0)
+                                EditorGUILayout.BeginHorizontal();
                             if(examples[i].scene != null)
                                 examples[i].DrawEditorButton();
+                            if(i != 0 && i % 5 == 4 || i == examples.Length - 1)
+                                EditorGUILayout.EndHorizontal();
+
                         }
-                        EditorGUILayout.EndHorizontal();
                         VerticalSpace();
                         Divider();
                     }

@@ -92,6 +92,7 @@ namespace MK.Toon.Editor
         // Advanced    //
         /////////////////
         protected MaterialProperty _receiveShadows;
+        protected MaterialProperty _IndirectFade;
         protected MaterialProperty _wrappedDiffuse;
         protected MaterialProperty _specular;
         protected MaterialProperty _specularIntensity;
@@ -153,6 +154,7 @@ namespace MK.Toon.Editor
             _rimDarkColor = FindProperty(Properties.rimDarkColor.uniform.name, props);
             
             _receiveShadows = FindProperty(Properties.receiveShadows.uniform.name, props);
+            _IndirectFade = FindProperty(Properties.indirectFade.uniform.name, props);
             _wrappedDiffuse = FindProperty(Properties.wrappedLighting.uniform.name, props);
             _specular = FindProperty(Properties.specular.uniform.name, props);
             _specularIntensity = FindProperty(Properties.specularIntensity.uniform.name, props);
@@ -565,6 +567,8 @@ namespace MK.Toon.Editor
         protected virtual void DrawEnvironmentReflections(MaterialEditor materialEditor)
         {
             materialEditor.ShaderProperty(_environmentReflections, UI.environmentReflections);
+            if(_environmentReflections.floatValue != (int)EnvironmentReflection.Off)
+                materialEditor.ShaderProperty(_IndirectFade, UI.indirectFade);
         }
 
         protected virtual void DrawAdvancedLighting(MaterialEditor materialEditor)
