@@ -5,9 +5,9 @@ using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(DialogueSystem))]
 [RequireComponent(typeof(CapsuleCollider))]
-public class GirlStartDialogue : MonoBehaviour
+public class StartDialogue : MonoBehaviour
 {
-    public Dialogue girlDialogue;
+    public Dialogue dialogue;
     private DialogueSystem dialogueSystem;
     private bool startDialogue = false;
 
@@ -34,7 +34,7 @@ public class GirlStartDialogue : MonoBehaviour
         if (other.gameObject.tag == "Player" && !startDialogue)
         {
             startDialogue = true;
-            dialogueSystem.StartDialogue(girlDialogue);
+            dialogueSystem.StartDialogue(dialogue);
             Debug.Log("player");
         }
 
