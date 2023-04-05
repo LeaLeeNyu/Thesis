@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Stairs
+  m_Name: Boundary_3
   m_Shader: {fileID: 4800000, guid: 7633a2fd8a3bed44791c9e952ff86e5d, type: 3}
   m_ValidKeywords:
   - _MK_ALBEDO_MAP
@@ -40,7 +40,7 @@ Material:
     m_TexEnvs:
     - _AlbedoMap:
         m_Texture: {fileID: 2800000, guid: 230c2b4726aae5644aa4e14a2c0a908e, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 10, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 0}
@@ -200,7 +200,7 @@ Material:
     - _AlbedoMapIntensity: 1
     - _AlphaClip: 0
     - _AlphaClipping: 1
-    - _AlphaCutoff: 0.512
+    - _AlphaCutoff: 0.579
     - _Anisotropy: 0
     - _Artistic: 0
     - _ArtisticFrequency: 1
@@ -217,7 +217,7 @@ Material:
     - _Contrast: 1
     - _Cull: 2
     - _CustomBlend: 0
-    - _Cutoff: 0.512
+    - _Cutoff: 0.579
     - _DetailBlend: 0
     - _DetailMapBlendMode: 0
     - _DetailMix: 0.5
@@ -326,9 +326,9 @@ Material:
     - _ZTest: 4
     - _ZWrite: 1
     m_Colors:
-    - _AlbedoColor: {r: 0.5377358, g: 0.50780195, b: 0.4345852, a: 1}
+    - _AlbedoColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.53773576, g: 0.50780195, b: 0.43458518, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DetailColor: {r: 1, g: 1, b: 1, a: 1}
     - _DissolveBorderColor: {r: 1, g: 1, b: 1, a: 1}
     - _DissolveColor: {r: 1, g: 1, b: 1, a: 0.5}

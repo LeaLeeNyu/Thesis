@@ -110,11 +110,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HatchingBrightMap:
-        m_Texture: {fileID: 2800000, guid: 70d2187724fd99b4f82f8b76f78d7a70, type: 3}
+        m_Texture: {fileID: 2800000, guid: 72cf44dd502b29b41828456f463908b3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HatchingDarkMap:
-        m_Texture: {fileID: 2800000, guid: 6f99548aaa8653c4ea98f12998b0c351, type: 3}
+        m_Texture: {fileID: 2800000, guid: 69015415064bbbc45a2f9c3196faef1d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HeightMap:
