@@ -20,4 +20,16 @@ public class SideSwitch : MonoBehaviour
             yang.SetActive(yangVisability);
         }
     }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        Debug.Log("Collide!");
+        if (collision.gameObject.tag == "Player")
+        {
+            yingVisability = !yingVisability;
+            yangVisability = !yangVisability;
+            ying.SetActive(yingVisability);
+            yang.SetActive(yangVisability);
+        }
+    }
 }
