@@ -12,7 +12,12 @@ ModelImporter:
   - first:
       74: 8766176269458174082
     second: Armature|Turn
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #2
+    second: {fileID: 2100000, guid: af2d92ff7169a334dbfe09258fc4bb7c, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
