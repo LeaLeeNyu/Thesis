@@ -15,12 +15,30 @@ ModelImporter:
   - first:
       74: 5670619611629532334
     second: StylizedHand.Left|Default
+  - first:
+      74: 1874218057751966407
+    second: StylizedHand.Left|Chick
+  - first:
+      74: 6716827672992815147
+    second: StylizedHand.Left|Grab
+  - first:
+      74: -3596228333477347491
+    second: StylizedHand.Left|Hold
+  - first:
+      74: 3098483400441450114
+    second: StylizedHand.Right|Default
+  - first:
+      74: 259537744700218907
+    second: StylizedHand.Right|Grab
+  - first:
+      74: -7445738170897495690
+    second: StylizedHand.Left|HoldChick
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Remesh2
-    second: {fileID: 2100000, guid: f86c40db3a064214abc441e7428dbcfb, type: 2}
+    second: {fileID: 2100000, guid: 5c37f0033f508e74b951f5c11d9ab1c8, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

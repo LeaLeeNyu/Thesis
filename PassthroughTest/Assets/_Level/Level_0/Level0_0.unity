@@ -3268,7 +3268,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &493323305
 Transform:
   m_ObjectHideFlags: 0
@@ -8057,8 +8057,8 @@ MonoBehaviour:
   dialogue:
     dialogues:
     - I won't go back.
-    - I hate her, my day with her were nothing but pain.
-    - I could share my last memory, and you will know what happened.
+    - "I hate her, my day with her \nwere nothing but pain."
+    - "I could share my last memory witn you, \nand you will know what happened."
     - 
     animationParameters:
     - Turn
@@ -10583,7 +10583,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1628488000
 Transform:
   m_ObjectHideFlags: 0
@@ -16271,7 +16271,7 @@ MonoBehaviour:
   m_UpdateTrackingType: 0
   m_EnableInputTracking: 1
   m_EnableInputActions: 1
-  m_ModelPrefab: {fileID: 5131059510040504971, guid: df9dde01e72a8e44db77cd09c3e0d38c,
+  m_ModelPrefab: {fileID: -8679921383154817045, guid: 0ee6ee121f0de5d45b2e19ab984dee07,
     type: 3}
   m_ModelParent: {fileID: 0}
   m_Model: {fileID: 0}
@@ -17021,7 +17021,7 @@ MonoBehaviour:
   m_UpdateTrackingType: 0
   m_EnableInputTracking: 1
   m_EnableInputActions: 1
-  m_ModelPrefab: {fileID: 5131059510040504971, guid: df9dde01e72a8e44db77cd09c3e0d38c,
+  m_ModelPrefab: {fileID: -8679921383154817045, guid: 7c41bb8815345004cbe839184e287e92,
     type: 3}
   m_ModelParent: {fileID: 0}
   m_Model: {fileID: 0}
@@ -17216,7 +17216,7 @@ GameObject:
   - component: {fileID: 2250471438232220924}
   - component: {fileID: 2250471438232220927}
   m_Layer: 0
-  m_Name: XR Origin PassThrough
+  m_Name: XR Origin
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

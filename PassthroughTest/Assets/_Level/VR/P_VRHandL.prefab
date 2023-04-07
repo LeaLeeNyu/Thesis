@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 77717820666333777}
   m_Layer: 0
-  m_Name: L_VRHand
+  m_Name: P_VRHandL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,6 +43,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 28d377728000657468772f384bf442d5, type: 3}
       propertyPath: m_Name
       value: Glowwatch
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 28d377728000657468772f384bf442d5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 28d377728000657468772f384bf442d5, type: 3}
       propertyPath: m_RootOrder
