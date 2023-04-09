@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private InputActionReference jumpReference;
     [SerializeField] private float jumpForce = 100f;
     [SerializeField] private GameObject checkGround;
-    [SerializeField] private float yDistance;
 
     private Rigidbody _rigidbody;
 
@@ -46,8 +45,6 @@ public class PlayerController : MonoBehaviour
         jumpReference.action.performed -= OnJump;
     }
 
-
-
     void OnJump(InputAction.CallbackContext context)
     {
         bool canJump = isGrounded();
@@ -57,9 +54,5 @@ public class PlayerController : MonoBehaviour
             _rigidbody.AddForce(Vector3.up * jumpForce);
     }
 
-    private void Update()
-    {
-
-    }
 
 }

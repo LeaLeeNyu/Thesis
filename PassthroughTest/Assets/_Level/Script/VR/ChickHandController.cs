@@ -11,7 +11,7 @@ public enum Hand
     Right,
 }
 
-public class XRHandController : MonoBehaviour
+public class ChickHandController : MonoBehaviour
 {
     #region HandInitialParameter
     public Hand handType;
@@ -24,7 +24,7 @@ public class XRHandController : MonoBehaviour
     [SerializeField] private string rightHandName;
     #endregion
 
-    public GameObject chick;
+    public Animator chickAnimator;
 
     private void InitializeHand()
     {
@@ -43,7 +43,7 @@ public class XRHandController : MonoBehaviour
 
 
         List<InputDevice> devices = new List<InputDevice>();
-        //Call InputDevices to see if it can find any devices with the characteristics we¡¯re looking for
+        //Call InputDevices to see if it can find any devices with the characteristics we are looking for
         InputDevices.GetDevicesWithCharacteristics(inputDeviceCharacteristics, devices);
 
         //Our hands might not be active and so they will not be generated from the search.
@@ -81,7 +81,7 @@ public class XRHandController : MonoBehaviour
         //if player jumps, then the chick in the left hand jumps
         if(isPressed && handType == Hand.Left)
         {
-
+            chickAnimator.SetBool("jump",true);
         }
 
     }
@@ -93,35 +93,14 @@ public class XRHandController : MonoBehaviour
         // _targetDevice.TryGetFeatureValue(CommonUsages.triggerButton, out bool trigger);       
 
         //use left hand joysitick to scroll the canvas list
-        //if(JoystickValue.y>= 0.8 && next)
-        //{
-        //    equipLastNum = equipListNum;
-        //    equipListNum += 1;
-        //    if (equipListNum > equipObjects.Length - 1)
-        //        equipListNum = 0;
-
-        //    equipObjects[equipLastNum].SetActive(false);
-        //    equipObjects[equipListNum].SetActive(true);
-
-        //    next = false;
-        //}
-        //else if(JoystickValue.y <= -0.8 && next)
-        //{
-        //    equipLastNum = equipListNum;
-        //    equipListNum -= 1;
-        //    if (equipListNum < 0)
-        //        equipListNum = equipObjects.Length - 1;
-
-        //    equipObjects[equipLastNum].SetActive(false);
-        //    equipObjects[equipListNum].SetActive(true);
-
-        //    next = false;
-        //}
-        //else if (JoystickValue.y == 0)
-        //{
-        //    //Only when the joystick reposition, the meun could switch to the next eqipment object again
-        //    next = true;
-        //}
+        if (JoystickValue.y >= 0.1 || JoystickValue.x >= 0.1)
+        {
+            chickAnimator.SetBool("walk", true);
+        }
+        else
+        {
+            chickAnimator.SetBool("walk", false);
+        }
 
     }
 
