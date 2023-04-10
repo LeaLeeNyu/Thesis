@@ -9,9 +9,16 @@ using System;
 
 public class PlayerController : MonoBehaviour
 {
+    //Jump related parameter 
     [SerializeField] private InputActionReference jumpReference;
     [SerializeField] private float jumpForce = 100f;
     [SerializeField] private GameObject checkGround;
+    public string leftHandName;
+
+    //Walk related parameter
+    [SerializeField] private InputActionReference walkReference;
+
+    private Animator chickAnimator;
 
     private Rigidbody _rigidbody;
 
@@ -38,11 +45,14 @@ public class PlayerController : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
         jumpReference.action.performed += OnJump;
+        walkReference.action.performed += OnMove;
+        //chickAnimator = GameObject.Find(leftHandName).transform.GetChild(0).GetComponent<Animator>();
     }
 
     private void OnDisable()
     {
         jumpReference.action.performed -= OnJump;
+        walkReference.action.performed -= OnMove;
     }
 
     void OnJump(InputAction.CallbackContext context)
@@ -52,7 +62,33 @@ public class PlayerController : MonoBehaviour
         //Debug.Log(canJump);
         if (canJump)
             _rigidbody.AddForce(Vector3.up * jumpForce);
+
+        if (chickAnimator != null)
+        {
+            chickAnimator.SetBool("jump", true);
+        }
+        else
+        {
+            chickAnimator = GameObject.Find(leftHandName).transform.GetChild(0).GetComponent<Animator>();
+        }
     }
 
+    void OnMove(InputAction.CallbackContext context)
+    {
+        Vector2 controller = context.ReadValue<Vector2>();
+
+        if(chickAnimator != null &&(controller.x>0.1f || controller.y > 0.1f))
+        {
+            chickAnimator.SetBool("walk", true);
+        }
+        else if(chickAnimator== null)
+        {
+            chickAnimator = GameObject.Find(leftHandName).transform.GetChild(0).GetComponent<Animator>();
+        }
+        else
+        {
+            chickAnimator.SetBool("walk", false);
+        }
+    }
 
 }

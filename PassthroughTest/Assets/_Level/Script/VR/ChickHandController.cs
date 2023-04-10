@@ -59,6 +59,7 @@ public class ChickHandController : MonoBehaviour
     private void Start()
     {
         InitializeHand();
+        FindChickAnimator();
     }
 
     protected virtual void Update()
@@ -66,10 +67,19 @@ public class ChickHandController : MonoBehaviour
         if (!_targetDevice.isValid)
         {
             InitializeHand();
+            FindChickAnimator();
         }
         else if (handType == Hand.Left)
         {
             TriggerPressed();
+        }
+    }
+
+    private void FindChickAnimator()
+    {
+        if(handType== Hand.Right)
+        {
+            
         }
     }
 
@@ -93,7 +103,7 @@ public class ChickHandController : MonoBehaviour
         // _targetDevice.TryGetFeatureValue(CommonUsages.triggerButton, out bool trigger);       
 
         //use left hand joysitick to scroll the canvas list
-        if (JoystickValue.y >= 0.1 || JoystickValue.x >= 0.1)
+        if (handType == Hand.Left && (JoystickValue.y >= 0.1 || JoystickValue.x >= 0.1))
         {
             chickAnimator.SetBool("walk", true);
         }
