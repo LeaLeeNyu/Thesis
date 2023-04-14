@@ -10,9 +10,9 @@ public class SideSwitch : MonoBehaviour
     private bool yingVisability = false;
     private bool yangVisability = true;
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if (other.tag == "Player")
         {
             yingVisability = !yingVisability;
             yangVisability = !yangVisability;
@@ -21,15 +21,15 @@ public class SideSwitch : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit(Collision collision)
-    {
-        Debug.Log("Collide!");
-        if (collision.gameObject.tag == "Player")
-        {
-            yingVisability = !yingVisability;
-            yangVisability = !yangVisability;
-            ying.SetActive(yingVisability);
-            yang.SetActive(yangVisability);
-        }
-    }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    Debug.Log("Collide!");
+    //    if (collision.gameObject.tag == "Player")
+    //    {
+    //        yingVisability = !yingVisability;
+    //        yangVisability = !yangVisability;
+    //        ying.SetActive(yingVisability);
+    //        yang.SetActive(yangVisability);
+    //    }
+    //}
 }

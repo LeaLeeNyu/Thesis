@@ -7,10 +7,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3453858298025629393, guid: 5241eccb55f5602479af08ba1f788c95,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3453858298025629406, guid: 5241eccb55f5602479af08ba1f788c95,
+        type: 3}
+      propertyPath: simulationSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3453858298025629406, guid: 5241eccb55f5602479af08ba1f788c95,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 3453858298121598561, guid: 5241eccb55f5602479af08ba1f788c95,
         type: 3}
       propertyPath: m_Name
       value: CFXR3 Iceball A + Ice Trail
+      objectReference: {fileID: 0}
+    - target: {fileID: 3453858298121598573, guid: 5241eccb55f5602479af08ba1f788c95,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3453858298121598573, guid: 5241eccb55f5602479af08ba1f788c95,
         type: 3}
@@ -29,6 +49,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3453858298121598573, guid: 5241eccb55f5602479af08ba1f788c95,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3453858298121598573, guid: 5241eccb55f5602479af08ba1f788c95,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -40,16 +65,6 @@ PrefabInstance:
     - target: {fileID: 3453858298121598573, guid: 5241eccb55f5602479af08ba1f788c95,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3453858298121598573, guid: 5241eccb55f5602479af08ba1f788c95,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3453858298121598573, guid: 5241eccb55f5602479af08ba1f788c95,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3453858298121598573, guid: 5241eccb55f5602479af08ba1f788c95,
@@ -67,18 +82,49 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3453858298369330665, guid: 5241eccb55f5602479af08ba1f788c95,
+    - target: {fileID: 3453858298121598575, guid: 5241eccb55f5602479af08ba1f788c95,
         type: 3}
-      propertyPath: m_Intensity
-      value: 0
+      propertyPath: m_Materials.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3453858298369330665, guid: 5241eccb55f5602479af08ba1f788c95,
         type: 3}
       propertyPath: m_Range
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 3453858298369330665, guid: 5241eccb55f5602479af08ba1f788c95,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5241eccb55f5602479af08ba1f788c95, type: 3}
+--- !u!1 &2531280756890085591 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3453858298369330664, guid: 5241eccb55f5602479af08ba1f788c95,
+    type: 3}
+  m_PrefabInstance: {fileID: 922811026810987839}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6566445461234947373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2531280756890085591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!4 &2531280757137298258 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3453858298121598573, guid: 5241eccb55f5602479af08ba1f788c95,
@@ -92,10 +138,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2531280757137298258}
     m_Modifications:
+    - target: {fileID: 7574212085389234828, guid: 3ca5825676ce7d8428378cb59d201e15,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9052320111475434380, guid: 3ca5825676ce7d8428378cb59d201e15,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9052320112042232133, guid: 3ca5825676ce7d8428378cb59d201e15,
         type: 3}
       propertyPath: m_Name
       value: CFXR3 Ice Trail A
+      objectReference: {fileID: 0}
+    - target: {fileID: 9052320112042232136, guid: 3ca5825676ce7d8428378cb59d201e15,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9052320112042232136, guid: 3ca5825676ce7d8428378cb59d201e15,
         type: 3}
@@ -114,6 +175,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9052320112042232136, guid: 3ca5825676ce7d8428378cb59d201e15,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9052320112042232136, guid: 3ca5825676ce7d8428378cb59d201e15,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -129,16 +195,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9052320112042232136, guid: 3ca5825676ce7d8428378cb59d201e15,
         type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9052320112042232136, guid: 3ca5825676ce7d8428378cb59d201e15,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 9052320112042232136, guid: 3ca5825676ce7d8428378cb59d201e15,
-        type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
@@ -151,6 +207,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9052320112042232138, guid: 3ca5825676ce7d8428378cb59d201e15,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ca5825676ce7d8428378cb59d201e15, type: 3}
