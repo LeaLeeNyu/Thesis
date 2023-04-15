@@ -10,14 +10,25 @@ public class SideSwitch : MonoBehaviour
     private bool yingVisability = false;
     private bool yangVisability = true;
 
+    private bool playerLeave = true;
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" && playerLeave)
         {
-            yingVisability = !yingVisability;
-            yangVisability = !yangVisability;
-            ying.SetActive(yingVisability);
-            yang.SetActive(yangVisability);
+            //yingVisability = !yingVisability;
+            //yangVisability = !yangVisability;
+            ying.SetActive(true);
+            yang.SetActive(false);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player" && playerLeave)
+        {
+            ying.SetActive(false);
+            yang.SetActive(true);
         }
     }
 
