@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SideSwitch : MonoBehaviour
 {
@@ -12,14 +13,17 @@ public class SideSwitch : MonoBehaviour
 
     private bool playerLeave = true;
 
+    public static UnityAction EnterBlack = delegate { };
+    public static UnityAction EnterWhite = delegate { };
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player" && playerLeave)
         {
-            //yingVisability = !yingVisability;
-            //yangVisability = !yangVisability;
             ying.SetActive(true);
             yang.SetActive(false);
+
+            EnterBlack.Invoke();
         }
     }
 
@@ -29,18 +33,8 @@ public class SideSwitch : MonoBehaviour
         {
             ying.SetActive(false);
             yang.SetActive(true);
+
+            EnterWhite.Invoke();
         }
     }
-
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    Debug.Log("Collide!");
-    //    if (collision.gameObject.tag == "Player")
-    //    {
-    //        yingVisability = !yingVisability;
-    //        yangVisability = !yangVisability;
-    //        ying.SetActive(yingVisability);
-    //        yang.SetActive(yangVisability);
-    //    }
-    //}
 }
