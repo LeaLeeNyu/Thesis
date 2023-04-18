@@ -9,7 +9,7 @@ public class RevealText : MonoBehaviour
     [SerializeField] private string animationParameter;
     [SerializeField] private Animator characterAnimator;
 
-    public void revealNextText()
+    public virtual void revealNextText()
     {
         gameObject.SetActive(false);
         text.SetActive(true);
