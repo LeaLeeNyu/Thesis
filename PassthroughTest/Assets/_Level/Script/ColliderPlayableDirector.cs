@@ -1,22 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Playables;
 
 public class ColliderPlayableDirector : MonoBehaviour
 {
-    [SerializeField] private GameObject book;
+    [SerializeField] private GameObject activeObject;
     [SerializeField] private PlayableDirector playableDirector;
 
-    private bool bookIsOpen = false;
+    public string activeObjectName; 
+    public static UnityAction pillsToBook = delegate { };
+    public static UnityAction bookToPhoto = delegate { };
+
+    private bool animationPlayerd = false;
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player" && !bookIsOpen)
+        if(other.gameObject.tag == "Player" && !animationPlayerd)
         {
-            book.SetActive(true);
+            activeObject.SetActive(true);
             playableDirector.Play();
-            bookIsOpen = true;
+            animationPlayerd = true;
+
+            if(activeObjectName == "book")
+            {
+                pillsToBook.Invoke();
+                Debug.Log("handbook");
+            }else if(activeObjectName == "photo")
+            {
+                bookToPhoto.Invoke();
+            }
         }
     }
 }

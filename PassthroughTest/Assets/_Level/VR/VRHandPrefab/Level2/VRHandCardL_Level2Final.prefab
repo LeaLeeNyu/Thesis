@@ -316,7 +316,7 @@ GameObject:
   - component: {fileID: 4956341262319533574}
   - component: {fileID: 2028042246090985851}
   m_Layer: 0
-  m_Name: postcard
+  m_Name: Postcard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -774,6 +774,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3692741797837472109}
   - component: {fileID: 6876734674279184890}
+  - component: {fileID: 4565176856515364917}
   m_Layer: 0
   m_Name: LeftHandPiills
   m_TagString: Untagged
@@ -821,6 +822,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4565176856515364917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4068036570968972247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5892c0af89ef2e4da3f62b7264d55f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handAnimator: {fileID: 6876734674279184890}
+  pills: {fileID: 6027696532115405124}
+  book: {fileID: 2236649571018832814}
+  photo: {fileID: 1725054099422039762}
 --- !u!1 &4105118865449527727
 GameObject:
   m_ObjectHideFlags: 0
@@ -1234,7 +1251,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4944011370536836735}
   m_Layer: 0
-  m_Name: VRHandCardL_Level2 1
+  m_Name: VRHandCardL_Level2Final
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

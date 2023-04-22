@@ -8,6 +8,7 @@ TagManager:
   - Material
   - Died
   - Go
+  - Hands
   layers:
   - Default
   - TransparentFX
