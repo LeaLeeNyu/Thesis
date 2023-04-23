@@ -9,6 +9,9 @@ TagManager:
   - Died
   - Go
   - Hands
+  - GFWater
+  - GFSit
+  - GFHi
   layers:
   - Default
   - TransparentFX
