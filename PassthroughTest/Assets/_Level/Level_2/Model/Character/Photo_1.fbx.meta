@@ -1,17 +1,8 @@
 fileFormatVersion: 2
-guid: 39cda097080d5cc45a95f053d05f83ec
+guid: 96db8823ee862744da79590df99d6954
 ModelImporter:
   serializedVersion: 21300
-  internalIDToNameTable:
-  - first:
-      74: -3103268857081582966
-    second: Paul|0_HandUp
-  - first:
-      74: 5128599345393766890
-    second: Paul|Action
-  - first:
-      74: 1488879080858109188
-    second: Paul|HandUp
+  internalIDToNameTable: []
   externalObjects: {}
   materials:
     materialImportMode: 2
