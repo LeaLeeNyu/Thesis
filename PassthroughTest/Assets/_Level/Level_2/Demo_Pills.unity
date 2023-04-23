@@ -3419,6 +3419,11 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 23790922555519712, guid: 5c58155118a1cf2469411428cfd4362c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 46c2497775a106445b21dfe0cd8db862, type: 2}
     - target: {fileID: 65273828542012078, guid: 5c58155118a1cf2469411428cfd4362c,
         type: 3}
       propertyPath: m_Size.x
@@ -9281,6 +9286,11 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 23455666976562664, guid: ec2a6eb55d6bac64f8e60e43c3cb20ad,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6011e49d86a7c154380cbe731330c38a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec2a6eb55d6bac64f8e60e43c3cb20ad, type: 3}
 --- !u!1 &1084504536 stripped
@@ -16611,6 +16621,11 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 23790922555519712, guid: 5c58155118a1cf2469411428cfd4362c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d3660415e37e4424a88a98106a032b86, type: 2}
     - target: {fileID: 65273828542012078, guid: 5c58155118a1cf2469411428cfd4362c,
         type: 3}
       propertyPath: m_Size.x
@@ -17041,6 +17056,11 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 23790922555519712, guid: 5c58155118a1cf2469411428cfd4362c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7dfc65bfe50b2d642a5f34be2f8848a1, type: 2}
     - target: {fileID: 65273828542012078, guid: 5c58155118a1cf2469411428cfd4362c,
         type: 3}
       propertyPath: m_Size.x
