@@ -435,7 +435,7 @@ MonoBehaviour:
   unrevealMaxHorizontalDistance: 50
   unrevealMinVerticalDistance: 0
   unrevealMaxVerticalDistance: 50
-  RevealTime: 3
+  RevealTime: 5
   UnrevealTime: 1
   RevealLetterOpacityBegin: 0
   UnrevealLetterOpacityBegin: 1
@@ -2025,7 +2025,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 180, y: 180, z: 180}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.103, y: 3.26}
+  m_AnchoredPosition: {x: -0.103, y: 3.286}
   m_SizeDelta: {x: 1431, y: 686}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &276011591
@@ -7968,7 +7968,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 759754501}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 1
   m_Height: 3
@@ -8018,7 +8018,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76f280aec354e63459a3230102d2a684, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MemoBallTimeline: {fileID: 0}
+  MemoBallTimeline: {fileID: 1656976237}
 --- !u!1 &771826062
 GameObject:
   m_ObjectHideFlags: 0
@@ -14457,7 +14457,7 @@ Transform:
   m_GameObject: {fileID: 1656976230}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0.274, y: 2.028, z: -12.395}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2531280755835063704}
@@ -14600,7 +14600,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1656976230}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.3
@@ -14619,7 +14619,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!95 &1656976236
 Animator:
@@ -14651,7 +14651,7 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: f6684cf9527d95444bdda5c93b941ee5, type: 2}
-  m_InitialState: 1
+  m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
@@ -15971,7 +15971,7 @@ MonoBehaviour:
   unrevealMaxHorizontalDistance: 50
   unrevealMinVerticalDistance: 0
   unrevealMaxVerticalDistance: 50
-  RevealTime: 3
+  RevealTime: 5
   UnrevealTime: 1
   RevealLetterOpacityBegin: 0
   UnrevealLetterOpacityBegin: 1
@@ -19852,7 +19852,7 @@ MonoBehaviour:
   m_UpdateTrackingType: 0
   m_EnableInputTracking: 1
   m_EnableInputActions: 1
-  m_ModelPrefab: {fileID: 4944011370536836735, guid: 6633971ef6f09544187295a32df54214,
+  m_ModelPrefab: {fileID: 4944011370536836735, guid: 0f00bd6462e9e9845b641004672629ba,
     type: 3}
   m_ModelParent: {fileID: 0}
   m_Model: {fileID: 0}
@@ -20556,7 +20556,7 @@ MonoBehaviour:
   m_UpdateTrackingType: 0
   m_EnableInputTracking: 1
   m_EnableInputActions: 1
-  m_ModelPrefab: {fileID: 4230370807050102527, guid: e7646c27f34a5e64a972aca3dc059b40,
+  m_ModelPrefab: {fileID: 4230370807050102527, guid: f19622eaa83d3994fb60f2281feddd70,
     type: 3}
   m_ModelParent: {fileID: 0}
   m_Model: {fileID: 0}
@@ -30820,7 +30820,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2531280756006762019
 Transform:
   m_ObjectHideFlags: 0

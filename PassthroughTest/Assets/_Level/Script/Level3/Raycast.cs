@@ -11,6 +11,9 @@ public class Raycast : MonoBehaviour
     public static UnityAction ActiveWater = delegate { };
     public static UnityAction ActiveSit = delegate { };
 
+    public GameObject textOne;
+    public GameObject textTwo;
+    public GameObject textThree;
 
     private void Update()
     {
@@ -22,16 +25,32 @@ public class Raycast : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
-            if(hit.collider.tag == "GFWater")
+            if(hit.collider.tag == "GFWater" )
             {
                 ActiveWater.Invoke();
-            }else if (hit.collider.tag == "GFSit")
+                textOne.SetActive(false);
+                textTwo.SetActive(true);
+                textThree.SetActive(false);
+            }
+            else if (hit.collider.tag == "GFSit")
             {
                 ActiveSit.Invoke();
+                textOne.SetActive(false);
+                textTwo.SetActive(false);
+                textThree.SetActive(true);
             }
             else if (hit.collider.tag == "GFHi")
             {
                 ActiveHi.Invoke();
+                textOne.SetActive(true);
+                textTwo.SetActive(false);
+                textThree.SetActive(false);
+            }
+            else
+            {
+                textOne.SetActive(false);
+                textTwo.SetActive(false);
+                textThree.SetActive(false);
             }
         }
     }
