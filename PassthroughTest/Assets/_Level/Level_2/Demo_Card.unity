@@ -2295,7 +2295,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4280953386
-  m_fontColor: {r: 0.16470589, g: 0.16470589, b: 0.16470589, a: 1}
+  m_fontColor: {r: 0.54901963, g: 0.50980395, b: 0.4784314, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3275,8 +3275,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4280953386
-  m_fontColor: {r: 0.16470589, g: 0.16470589, b: 0.16470589, a: 1}
+    rgba: 4286218892
+  m_fontColor: {r: 0.54901963, g: 0.50980395, b: 0.4784314, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3811,7 +3811,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 33aeb84ce5072074d8bc953869cfbc90, type: 2}
+      objectReference: {fileID: 2100000, guid: fde9d77eaa0fde641a70adbc970daafa, type: 2}
     - target: {fileID: 919132149155446097, guid: 2232e49edc0a2b849a072cc884c5613b,
         type: 3}
       propertyPath: m_Name
@@ -3821,7 +3821,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 33aeb84ce5072074d8bc953869cfbc90, type: 2}
+      objectReference: {fileID: 2100000, guid: fde9d77eaa0fde641a70adbc970daafa, type: 2}
     - target: {fileID: 5834421416174726060, guid: 2232e49edc0a2b849a072cc884c5613b,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -3831,12 +3831,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 33aeb84ce5072074d8bc953869cfbc90, type: 2}
+      objectReference: {fileID: 2100000, guid: fde9d77eaa0fde641a70adbc970daafa, type: 2}
     - target: {fileID: 8410352293329545692, guid: 2232e49edc0a2b849a072cc884c5613b,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 33aeb84ce5072074d8bc953869cfbc90, type: 2}
+      objectReference: {fileID: 2100000, guid: fde9d77eaa0fde641a70adbc970daafa, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2232e49edc0a2b849a072cc884c5613b, type: 3}
 --- !u!1 &892906666 stripped
@@ -8799,7 +8799,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4280953386
-  m_fontColor: {r: 0.16470589, g: 0.16470589, b: 0.16470589, a: 1}
+  m_fontColor: {r: 0.54901963, g: 0.50980395, b: 0.4784314, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

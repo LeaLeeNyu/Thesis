@@ -558,7 +558,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &785321580
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2638,7 +2638,7 @@ Transform:
   m_GameObject: {fileID: 1698700593}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.845495, y: 0, z: -3.04}
-  m_LocalScale: {x: 10, y: 0.1, z: 15}
+  m_LocalScale: {x: 50, y: 0.1, z: 50}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2662,7 +2662,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1717543363
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2874,7 +2874,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1752623119
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3002,7 +3002,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1928185427
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3311,6 +3311,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Crumpled_paper
+      objectReference: {fileID: 0}
+    - target: {fileID: 5668641702034658864, guid: 7becd79d3b024c54999981eedca20c1f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6173295892369668069, guid: 7becd79d3b024c54999981eedca20c1f,
         type: 3}
@@ -3699,7 +3704,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &3823067104886467268
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4666,8 +4671,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7240201528027350523}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0.79, y: 0, z: -1}
+  m_LocalRotation: {x: -0, y: 0.99144465, z: -0, w: -0.1305278}
+  m_LocalPosition: {x: 1.343, y: 0, z: -0.591}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4678,7 +4683,7 @@ Transform:
   - {fileID: 8881409852834775387}
   m_Father: {fileID: 0}
   m_RootOrder: 25
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 195, z: 0}
 --- !u!114 &7240201528027350522
 MonoBehaviour:
   m_ObjectHideFlags: 0
