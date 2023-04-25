@@ -98,6 +98,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dry_plant (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 147424, guid: b1b3537abe28b2944a66812d338ce960, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 490608, guid: b1b3537abe28b2944a66812d338ce960, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -176,6 +180,10 @@ PrefabInstance:
     - target: {fileID: 147424, guid: b1b3537abe28b2944a66812d338ce960, type: 3}
       propertyPath: m_Name
       value: Dry_plant (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 147424, guid: b1b3537abe28b2944a66812d338ce960, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 490608, guid: b1b3537abe28b2944a66812d338ce960, type: 3}
       propertyPath: m_RootOrder
@@ -256,6 +264,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dry_plant
       objectReference: {fileID: 0}
+    - target: {fileID: 147424, guid: b1b3537abe28b2944a66812d338ce960, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 490608, guid: b1b3537abe28b2944a66812d338ce960, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -334,6 +346,10 @@ PrefabInstance:
     - target: {fileID: 147424, guid: b1b3537abe28b2944a66812d338ce960, type: 3}
       propertyPath: m_Name
       value: Dry_plant (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 147424, guid: b1b3537abe28b2944a66812d338ce960, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 490608, guid: b1b3537abe28b2944a66812d338ce960, type: 3}
       propertyPath: m_RootOrder

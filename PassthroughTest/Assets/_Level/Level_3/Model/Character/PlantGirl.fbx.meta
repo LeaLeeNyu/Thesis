@@ -12,6 +12,9 @@ ModelImporter:
   - first:
       74: -3620194812065584819
     second: Kira|GivePlant
+  - first:
+      74: 8151496948218395535
+    second: Kira|GivePlante
   externalObjects: {}
   materials:
     materialImportMode: 2
