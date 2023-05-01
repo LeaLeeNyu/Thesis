@@ -10,5 +10,7 @@ public class EndAnimation : MonoBehaviour
     public void PlayAnimation()
     {
         animator.SetBool(animationParameter, true);
+
+
     }
 }
